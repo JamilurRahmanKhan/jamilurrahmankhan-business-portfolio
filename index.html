@@ -1,0 +1,2187 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Jamilur Rahman Khan | Computer Science Engineer Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              background: "#0b0f19",
+              surface: "#111827",
+              surface2: "#0f172a",
+              card: "rgba(17,24,39,0.72)",
+              cardSolid: "#111827",
+              line: "rgba(148,163,184,0.14)",
+              lineStrong: "rgba(148,163,184,0.25)",
+              text: "#e5edf7",
+              muted: "#94a3b8",
+              primary: "#38bdf8",
+              primary2: "#22d3ee",
+              accent: "#8b5cf6",
+              success: "#34d399",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(56,189,248,0.12), 0 12px 40px rgba(14,165,233,0.16)",
+              soft: "0 10px 30px rgba(2,6,23,0.35)",
+              card: "0 8px 30px rgba(2,6,23,0.35)",
+            },
+            backgroundImage: {
+              "hero-grid":
+                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(34, 211, 238, 0.1),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(139, 92, 246, 0.12),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at bottom center,
+            rgba(56, 189, 248, 0.08),
+            transparent 28%
+          ),
+          #0b0f19;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 500,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .glass {
+        background: rgba(15, 23, 42, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .hero-grid {
+        background-size: 34px 34px;
+        background-position: center;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .nav-link.active {
+        color: #38bdf8;
+      }
+
+      .section-anchor {
+        scroll-margin-top: 100px;
+      }
+
+      .mobile-menu-hidden {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition:
+          max-height 0.35s ease,
+          opacity 0.25s ease;
+      }
+
+      .mobile-menu-open {
+        max-height: 500px;
+        opacity: 1;
+        pointer-events: auto;
+        transition:
+          max-height 0.35s ease,
+          opacity 0.25s ease;
+      }
+
+      .gradient-border {
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(17, 24, 39, 0.92),
+          rgba(15, 23, 42, 0.92)
+        );
+      }
+
+      .gradient-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(56, 189, 248, 0.45),
+          rgba(139, 92, 246, 0.28),
+          rgba(255, 255, 255, 0.08)
+        );
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .language-filter {
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: #94a3b8;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .language-filter:hover {
+        transform: translateY(-1px);
+        border-color: rgba(56, 189, 248, 0.22);
+        color: #e5edf7;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .language-filter.active {
+        color: #020617;
+        background: linear-gradient(90deg, #38bdf8, #22d3ee);
+        border-color: transparent;
+        box-shadow: 0 10px 24px rgba(14, 165, 233, 0.22);
+      }
+
+      .project-tag {
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body text-text selection:bg-primary selection:text-slate-950"
+  >
+    <!-- background -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div
+        class="absolute inset-0 hero-grid bg-hero-grid opacity-[0.045]"
+      ></div>
+      <div
+        class="absolute top-[-120px] left-[-120px] h-[340px] w-[340px] rounded-full bg-primary/20 blur-3xl"
+      ></div>
+      <div
+        class="absolute right-[-140px] top-[80px] h-[340px] w-[340px] rounded-full bg-accent/20 blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-[-120px] left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary2/10 blur-3xl"
+      ></div>
+    </div>
+
+    <!-- navbar -->
+    <header class="fixed top-0 z-50 w-full">
+      <nav
+        class="mx-auto mt-4 w-[calc(100%-1.25rem)] max-w-7xl rounded-2xl glass shadow-soft"
+      >
+        <div class="flex items-center justify-between px-5 py-4 md:px-7">
+          <a
+            href="#home"
+            class="font-headline text-lg font-bold tracking-tight sm:text-xl"
+          >
+            Jamilur Rahman Khan<span class="text-primary">.</span>
+          </a>
+
+          <div class="hidden items-center gap-7 md:flex">
+            <a
+              href="#home"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Projects</a
+            >
+            <a
+              href="#experience"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Experience</a
+            >
+            <a
+              href="#education"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Education</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-sm text-muted hover:text-text transition"
+              >Contact</a
+            >
+            <a
+              href="#contact"
+              class="rounded-xl bg-gradient-to-r from-primary to-primary2 px-4 py-2 text-sm font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5"
+            >
+              Hire Me
+            </a>
+          </div>
+
+          <button
+            id="menuButton"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/5 text-text transition hover:border-lineStrong hover:bg-white/10 md:hidden"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            type="button"
+          >
+            <span id="menuIcon" class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+
+        <div
+          id="mobileMenu"
+          class="mobile-menu-hidden border-t border-line md:hidden"
+        >
+          <div class="flex flex-col gap-1 px-4 py-4">
+            <a
+              href="#home"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Projects</a
+            >
+            <a
+              href="#experience"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Experience</a
+            >
+            <a
+              href="#education"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Education</a
+            >
+            <a
+              href="#contact"
+              class="mobile-link rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-text"
+              >Contact</a
+            >
+            <a
+              href="#contact"
+              class="mt-2 rounded-xl bg-gradient-to-r from-primary to-primary2 px-4 py-3 text-center text-sm font-semibold text-slate-950"
+            >
+              Let’s Work Together
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- hero -->
+      <section
+        id="home"
+        class="section-anchor mx-auto flex min-h-screen max-w-7xl items-center px-5 pt-32 sm:px-6 lg:px-8"
+      >
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="reveal">
+            <div class="mb-5 flex flex-wrap gap-3">
+              <!-- <div class="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-3 py-1.5 text-xs text-muted">
+              <span class="h-2 w-2 rounded-full bg-success"></span>
+              Available for internships & freelance work
+            </div> -->
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs text-primary"
+              >
+                Building modern web products
+              </div>
+            </div>
+
+            <h1
+              class="font-headline text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Computer Science Engineer building
+              <span
+                class="bg-gradient-to-r from-primary to-primary2 bg-clip-text text-transparent"
+              >
+                scalable, polished, user-focused
+              </span>
+              software.
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
+              I design and develop modern web applications with strong
+              fundamentals in data structures, software engineering, backend
+              systems, and clean UI. I focus on building products that are
+              performant, elegant, and ready for real-world use.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <span
+                class="rounded-full border border-line bg-white/5 px-3 py-2 text-xs text-text/90"
+                >Full-Stack Development</span
+              >
+              <span
+                class="rounded-full border border-line bg-white/5 px-3 py-2 text-xs text-text/90"
+                >Problem Solving</span
+              >
+              <span
+                class="rounded-full border border-line bg-white/5 px-3 py-2 text-xs text-text/90"
+                >DSA & CS Fundamentals</span
+              >
+              <span
+                class="rounded-full border border-line bg-white/5 px-3 py-2 text-xs text-text/90"
+                >Responsive UI Engineering</span
+              >
+            </div>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary2 px-6 py-3.5 font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5"
+              >
+                View Projects
+                <span class="material-symbols-outlined text-[20px]"
+                  >arrow_forward</span
+                >
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 rounded-xl border border-lineStrong bg-white/5 px-6 py-3.5 font-semibold text-text transition hover:border-primary/30 hover:bg-white/10"
+              >
+                Contact Me
+              </a>
+              <a
+                href="./Resume_Jamilur_Rahman_Khan.pdf"
+                download="Jamilur_Rahman_Khan_Resume.pdf"
+                class="inline-flex items-center gap-2 rounded-xl border border-line bg-transparent px-6 py-3.5 font-semibold text-muted transition hover:text-text"
+              >
+                Download Resume
+              </a>
+            </div>
+
+            <div
+              class="mt-10 flex flex-wrap items-center gap-5 text-sm text-muted"
+            >
+              <a
+                href="https://github.com/JamilurRahmanKhan/"
+                class="transition hover:text-primary"
+                target="_blank"
+                >GitHub</a
+              >
+              <a
+                href="linkedin.com/in/jamilurrahmankhan/"
+                class="transition hover:text-primary"
+                target="_blank"
+                >LinkedIn</a
+              >
+              <a
+                href="https://leetcode.com/u/jamilurrahmankhan32/"
+                class="transition hover:text-primary"
+                target="_blank"
+                >LeetCode</a
+              >
+              <!-- <a href="#" class="transition hover:text-primary">Codeforces</a> -->
+              <a
+                href="mailto:jamilurrahmankhan32@gmail.com"
+                class="transition hover:text-primary"
+                target="_blank"
+                >Email</a
+              >
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div
+              class="gradient-border relative mx-auto max-w-md rounded-[2rem] p-3 shadow-card"
+            >
+              <div
+                class="relative overflow-hidden rounded-[1.5rem] bg-slate-900"
+              >
+                <img
+                  src="./images/portfolio-image.png"
+                  alt="Professional portrait"
+                  class="aspect-[4/5] w-full object-cover"
+                />
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-6"
+                >
+                  <div
+                    class="rounded-2xl border border-white/10 bg-slate-950/55 p-4 backdrop-blur"
+                  >
+                    <p class="text-xs uppercase tracking-[0.18em] text-primary">
+                      Engineering Focus
+                    </p>
+                    <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
+                      <div class="rounded-xl border border-line bg-white/5 p-3">
+                        <p class="text-muted">Stack</p>
+                        <p class="mt-1 font-semibold text-text">
+                          React · Next · Node
+                        </p>
+                      </div>
+                      <div class="rounded-xl border border-line bg-white/5 p-3">
+                        <p class="text-muted">Core</p>
+                        <p class="mt-1 font-semibold text-text">
+                          DSA · OOP · DBMS
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/20 blur-2xl"
+              ></div>
+              <div
+                class="pointer-events-none absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-accent/20 blur-2xl"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- about -->
+      <section
+        id="about"
+        class="section-anchor mx-auto max-w-7xl px-5 py-24 sm:px-6 lg:px-8"
+      >
+        <div class="grid gap-8 lg:grid-cols-12">
+          <div class="reveal lg:col-span-4">
+            <p
+              class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+            >
+              About Me
+            </p>
+            <h2
+              class="font-headline text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+              Engineering with clarity, structure, and real-world impact.
+            </h2>
+          </div>
+
+          <div class="reveal lg:col-span-8">
+            <div class="grid gap-6 md:grid-cols-2">
+              <div
+                class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+              >
+                <h3 class="font-headline text-xl font-semibold">Who I Am</h3>
+                <p class="mt-3 leading-7 text-muted">
+                  I am a Computer Science Engineer focused on software
+                  development, clean architecture, and performance-driven
+                  systems. I enjoy transforming ideas into robust digital
+                  products with strong engineering discipline and thoughtful
+                  design.
+                </p>
+              </div>
+
+              <div
+                class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+              >
+                <h3 class="font-headline text-xl font-semibold">
+                  What I Bring
+                </h3>
+                <p class="mt-3 leading-7 text-muted">
+                  Strong problem-solving, solid computer science fundamentals,
+                  full-stack development experience, and a mindset of continuous
+                  learning. I care about maintainable code, usability,
+                  scalability, and practical business value.
+                </p>
+              </div>
+
+              <div
+                class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+              >
+                <h3 class="font-headline text-xl font-semibold">
+                  Career Direction
+                </h3>
+                <p class="mt-3 leading-7 text-muted">
+                  I am interested in software engineering, full-stack
+                  development, backend systems, developer tools, and
+                  product-focused engineering roles where I can grow by solving
+                  meaningful technical challenges.
+                </p>
+              </div>
+
+              <div
+                class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+              >
+                <h3 class="font-headline text-xl font-semibold">
+                  Engineering Strengths
+                </h3>
+                <p class="mt-3 leading-7 text-muted">
+                  Data structures and algorithms, object-oriented thinking,
+                  responsive web interfaces, API integration, database design,
+                  team collaboration, and turning complexity into clear
+                  execution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- skills -->
+      <section
+        id="skills"
+        class="section-anchor mx-auto max-w-7xl px-5 py-24 sm:px-6 lg:px-8"
+      >
+        <div class="reveal text-center">
+          <p
+            class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+          >
+            Technical Profile
+          </p>
+          <h2
+            class="font-headline text-3xl font-bold tracking-tight sm:text-4xl"
+          >
+            Skills & Technology Stack
+          </h2>
+          <p class="mx-auto mt-4 max-w-2xl text-muted">
+            A structured skill set across software engineering, modern
+            development tools, backend systems, and computer science
+            fundamentals.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-5">
+          <!-- Languages -->
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">code</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">Languages</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >JavaScript</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >TypeScript</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >PHP</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Java</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Python</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >SQL</span
+              >
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">web</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">Frontend</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >React</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Next.js</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Blade</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Thymeleaf</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Tailwind CSS</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Bootstrap</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Livewire</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Alpine.js</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Framer Motion</span
+              >
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">dns</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">Backend</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Node.js</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Express.js</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Spring Boot</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Spring Security</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Laravel</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Django</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >REST API</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >JWT Authentication</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Socket.IO</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >WebRTC</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Celery</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Redis</span
+              >
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">storage</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">Databases</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >MySQL</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >MongoDB</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >PostgreSQL</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Neon</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Redis Cache</span
+              >
+            </div>
+          </div>
+
+          <!-- Tools & Deployment -->
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">build</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">
+                Tools & DevOps
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Git</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >GitHub Actions</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Docker</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Vercel</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Railway</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Cloudinary</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Stripe</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Firebase</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Vite</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Wagtail CMS</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Core CS -->
+        <div class="mt-6">
+          <div
+            class="reveal rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+          >
+            <div class="mb-5 flex items-center gap-3">
+              <div class="rounded-2xl bg-primary/10 p-3 text-primary">
+                <span class="material-symbols-outlined">terminal</span>
+              </div>
+              <h3 class="font-headline text-xl font-semibold">
+                Core CS Fundamentals
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >DSA</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >OOP</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >DBMS</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Operating Systems</span
+              >
+              <span
+                class="rounded-full border border-line px-3 py-2 text-xs text-muted"
+                >Computer Networks</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- projects -->
+      <section
+        id="projects"
+        class="section-anchor mx-auto max-w-7xl px-5 py-24 sm:px-6 lg:px-8"
+      >
+        <div
+          class="reveal flex flex-col items-start justify-between gap-6 md:flex-row md:items-end"
+        >
+          <div>
+            <p
+              class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+            >
+              Portfolio Highlights
+            </p>
+            <h2
+              class="font-headline text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+              Projects by Language
+            </h2>
+            <p class="mt-4 max-w-2xl text-muted">
+              Explore projects grouped by programming language. Select a
+              language to view all related projects, including cases where one
+              language powers multiple builds.
+            </p>
+          </div>
+
+          <div
+            class="rounded-2xl border border-line bg-white/5 px-4 py-3 text-sm text-muted"
+          >
+            <span id="projectCount">0</span> projects shown
+          </div>
+        </div>
+
+        <div
+          id="languageFilters"
+          class="mt-10 reveal flex flex-wrap gap-3"
+          aria-label="Project language filters"
+        ></div>
+
+        <div
+          id="projectsGrid"
+          class="mt-12 grid gap-8 lg:grid-cols-2"
+          aria-live="polite"
+        ></div>
+      </section>
+
+      <!-- experience -->
+      <section
+        id="experience"
+        class="section-anchor mx-auto max-w-7xl px-5 py-24 sm:px-6 lg:px-8"
+      >
+        <div class="reveal mb-12">
+          <p
+            class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+          >
+            Professional Journey
+          </p>
+          <h2
+            class="font-headline text-3xl font-bold tracking-tight sm:text-4xl"
+          >
+            Experience & Achievements
+          </h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-3">
+          <div class="reveal space-y-5">
+            <div
+              class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+            >
+              <h3 class="font-headline text-lg font-semibold">
+                Problem Solving
+              </h3>
+              <p class="mt-3 text-3xl font-bold text-primary">150+</p>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                Solved coding problems across online judges and practice
+                platforms.
+              </p>
+            </div>
+
+            <div
+              class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+            >
+              <h3 class="font-headline text-lg font-semibold">
+                Projects Built
+              </h3>
+              <p class="mt-3 text-3xl font-bold text-primary">8+</p>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                Academic and personal projects spanning frontend, backend, and
+                full-stack applications.
+              </p>
+            </div>
+
+            <div
+              class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+            >
+              <h3 class="font-headline text-lg font-semibold">Focus Areas</h3>
+              <p class="mt-3 text-sm leading-7 text-muted">
+                Software engineering, full-stack web development, system
+                thinking, and computer science fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal lg:col-span-2">
+            <div
+              class="relative space-y-6 before:absolute before:left-[11px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-line"
+            >
+              <div class="relative pl-10">
+                <span
+                  class="absolute left-0 top-2 h-6 w-6 rounded-full border-4 border-background bg-primary"
+                ></span>
+                <div
+                  class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+                >
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                  >
+                    <div>
+                      <h3 class="font-headline text-xl font-semibold">
+                        Full-Stack Development Projects
+                      </h3>
+                      <p class="mt-1 text-sm text-primary">
+                        Personal / Academic Work
+                      </p>
+                    </div>
+                    <span class="text-sm text-muted">2024 — Present</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
+                    <li>
+                      • Built responsive web applications with reusable UI
+                      components and clean layout systems.
+                    </li>
+                    <li>
+                      • Practiced project structuring, frontend optimization,
+                      and backend integration.
+                    </li>
+                    <li>
+                      • Focused on clean code, responsiveness, and
+                      portfolio-quality product presentation.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="relative pl-10">
+                <span
+                  class="absolute left-0 top-2 h-6 w-6 rounded-full border-4 border-background bg-primary2"
+                ></span>
+                <div
+                  class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+                >
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                  >
+                    <div>
+                      <h3 class="font-headline text-xl font-semibold">
+                        Competitive Programming & Problem Solving
+                      </h3>
+                      <p class="mt-1 text-sm text-primary">
+                        Continuous Learning
+                      </p>
+                    </div>
+                    <span class="text-sm text-muted">Ongoing</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
+                    <li>
+                      • Strengthened logical reasoning through structured
+                      problem solving.
+                    </li>
+                    <li>
+                      • Improved efficiency in algorithm design, debugging, and
+                      time complexity analysis.
+                    </li>
+                    <li>
+                      • Built a stronger foundation in DSA, recursion, greedy
+                      methods, and graphs.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="relative pl-10">
+                <span
+                  class="absolute left-0 top-2 h-6 w-6 rounded-full border-4 border-background bg-accent"
+                ></span>
+                <div
+                  class="rounded-3xl border border-line bg-white/5 p-6 shadow-card"
+                >
+                  <div
+                    class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"
+                  >
+                    <div>
+                      <h3 class="font-headline text-xl font-semibold">
+                        Teamwork & Collaboration
+                      </h3>
+                      <p class="mt-1 text-sm text-primary">
+                        Project-Based Work
+                      </p>
+                    </div>
+                    <span class="text-sm text-muted">Recent</span>
+                  </div>
+                  <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
+                    <li>
+                      • Worked on project planning, feature breakdown, and
+                      implementation tasks.
+                    </li>
+                    <li>
+                      • Practiced collaborative development, version control,
+                      and structured problem ownership.
+                    </li>
+                    <li>
+                      • Focused on writing maintainable and understandable code
+                      for shared development workflows.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- education -->
+      <section
+        id="education"
+        class="section-anchor mx-auto max-w-7xl px-5 py-24 sm:px-6 lg:px-8"
+      >
+        <div class="grid gap-8 lg:grid-cols-3">
+          <div
+            class="reveal lg:col-span-2 rounded-[1.75rem] border border-line bg-white/5 p-8 shadow-card"
+          >
+            <p
+              class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+            >
+              Education
+            </p>
+            <h2 class="font-headline text-3xl font-bold tracking-tight">
+              Academic Background
+            </h2>
+
+            <div
+              class="mt-8 flex flex-col gap-8 lg:flex-row lg:justify-between"
+            >
+              <div class="flex-1">
+                <h3 class="font-headline text-2xl font-semibold">
+                  B.Sc. in Computer Science & Engineering
+                </h3>
+                <p class="mt-2 text-lg text-primary">
+                  United International University
+                </p>
+                <p class="mt-2 text-sm text-muted">
+                  Graduation: 2025 · CGPA: 3.72
+                </p>
+
+                <div class="mt-6">
+                  <h4 class="font-semibold text-text">Relevant Coursework</h4>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >Data Structures & Algorithms</span
+                    >
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >OOP</span
+                    >
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >DBMS</span
+                    >
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >Operating Systems</span
+                    >
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >Computer Networks</span
+                    >
+                    <span
+                      class="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                      >Software Engineering</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full self-start h-fit rounded-3xl border border-line bg-slate-950/40 p-6 shadow-card lg:max-w-xs"
+              >
+                <h4 class="font-headline text-lg font-semibold">
+                  Certifications
+                </h4>
+
+                <a
+                  href="./images/webdevLaravel.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block mt-5"
+                >
+                  <div
+                    class="rounded-2xl border border-line bg-white/5 p-5 transition hover:border-primary/20 hover:bg-white/[0.07]"
+                  >
+                    <div class="flex items-start justify-between gap-3">
+                      <div>
+                        <p class="font-semibold text-text">
+                          Web Development Using Laravel & Vue
+                        </p>
+                        <p class="mt-1 text-sm text-muted">Date · 2024</p>
+                      </div>
+                      <span
+                        class="material-symbols-outlined text-primary text-[20px]"
+                        >open_in_new</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="reveal rounded-[1.75rem] border border-line bg-white/5 p-8 shadow-card"
+          >
+            <p
+              class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+            >
+              Highlights
+            </p>
+            <h3 class="font-headline text-2xl font-semibold">
+              Career Snapshot
+            </h3>
+
+            <div class="mt-6 space-y-5">
+              <div class="rounded-2xl border border-line bg-slate-950/35 p-5">
+                <p class="text-sm text-muted">Focus</p>
+                <p class="mt-1 font-semibold">Software Engineering</p>
+              </div>
+              <div class="rounded-2xl border border-line bg-slate-950/35 p-5">
+                <p class="text-sm text-muted">Interest</p>
+                <p class="mt-1 font-semibold">Full-Stack / Backend Roles</p>
+              </div>
+              <div class="rounded-2xl border border-line bg-slate-950/35 p-5">
+                <p class="text-sm text-muted">Strength</p>
+                <p class="mt-1 font-semibold">
+                  Problem Solving + Practical Build Skills
+                </p>
+              </div>
+              <div class="rounded-2xl border border-line bg-slate-950/35 p-5">
+                <p class="text-sm text-muted">Open To</p>
+                <p class="mt-1 font-semibold">Collaborations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section
+        id="contact"
+        class="section-anchor mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
+      >
+        <div
+          class="reveal overflow-hidden rounded-[1.5rem] border border-line bg-white/5 shadow-card sm:rounded-[2rem]"
+        >
+          <div class="p-6 sm:p-8 lg:p-12">
+            <p
+              class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm"
+            >
+              Contact
+            </p>
+
+            <h2
+              class="font-headline text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+            >
+              Let’s build something meaningful.
+            </h2>
+
+            <p
+              class="mt-4 max-w-2xl text-sm leading-7 text-muted sm:mt-5 sm:text-base sm:leading-8"
+            >
+              I’m open to internships, freelance work, collaborations, and
+              software engineering opportunities. Reach out if you’d like to
+              discuss a project, role, or technical idea.
+            </p>
+
+            <div
+              class="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2"
+            >
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-line bg-white/5 p-4 sm:p-5"
+              >
+                <div
+                  class="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px] sm:text-[22px]"
+                    >mail</span
+                  >
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm text-muted">Email</p>
+                  <a
+                    href="mailto:jamilurrahmankhan32@gmail.com"
+                    class="break-all font-semibold text-text transition hover:text-primary hover:underline"
+                  >
+                    jamilurrahmankhan32@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-line bg-white/5 p-4 sm:p-5"
+              >
+                <div
+                  class="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px] sm:text-[22px]"
+                    >call</span
+                  >
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm text-muted">Phone</p>
+                  <a
+                    href="tel:+8801987044239"
+                    class="font-semibold text-text transition hover:text-primary hover:underline"
+                  >
+                    +880 1987044239
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-line bg-white/5 p-4 sm:p-5"
+              >
+                <div
+                  class="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px] sm:text-[22px]"
+                    >location_on</span
+                  >
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm text-muted">Location</p>
+                  <p class="font-semibold text-text">Bangladesh</p>
+                </div>
+              </div>
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-line bg-white/5 p-4 sm:p-5"
+              >
+                <div
+                  class="shrink-0 rounded-2xl bg-primary/10 p-3 text-primary"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px] sm:text-[22px]"
+                    >language</span
+                  >
+                </div>
+                <div class="min-w-0">
+                  <p class="text-sm text-muted">Profiles</p>
+
+                  <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <a
+                      href="https://github.com/JamilurRahmanKhan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-semibold text-text transition hover:text-primary hover:underline"
+                    >
+                      GitHub
+                    </a>
+
+                    <span class="hidden text-muted sm:inline">·</span>
+
+                    <a
+                      href="http://linkedin.com/in/jamilurrahmankhan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-semibold text-text transition hover:text-primary hover:underline"
+                    >
+                      LinkedIn
+                    </a>
+
+                    <span class="hidden text-muted sm:inline">·</span>
+
+                    <a
+                      href="https://leetcode.com/u/jamilurrahmankhan32"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-semibold text-text transition hover:text-primary hover:underline"
+                    >
+                      LeetCode
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line px-5 py-8 sm:px-6 lg:px-8">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-muted md:flex-row md:items-center md:justify-between"
+      >
+        <p>
+          © 2026 Jamilur Rahman Khan. Built with precision and clean
+          engineering.
+        </p>
+        <div class="flex flex-wrap gap-5">
+          <a
+            href="https://github.com/JamilurRahmanKhan"
+            target="_blank"
+            class="transition hover:text-primary"
+            >GitHub</a
+          >
+          <a href="#" target="_blank" class="transition hover:text-primary"
+            >LinkedIn</a
+          >
+          <a href="#" target="_blank" class="transition hover:text-primary"
+            >LeetCode</a
+          >
+          <!-- <a href="#" target="_blank" class="transition hover:text-primary"
+            >Codeforces</a
+          > -->
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const menuIcon = document.getElementById("menuIcon");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const reveals = document.querySelectorAll(".reveal");
+
+      let menuOpen = false;
+
+      function openMenu() {
+        menuOpen = true;
+        mobileMenu.classList.remove("mobile-menu-hidden");
+        mobileMenu.classList.add("mobile-menu-open");
+        menuButton.setAttribute("aria-expanded", "true");
+        menuIcon.textContent = "close";
+      }
+
+      function closeMenu() {
+        menuOpen = false;
+        mobileMenu.classList.remove("mobile-menu-open");
+        mobileMenu.classList.add("mobile-menu-hidden");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuIcon.textContent = "menu";
+      }
+
+      menuButton.addEventListener("click", () => {
+        if (menuOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMenu();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      );
+
+      reveals.forEach((item) => revealObserver.observe(item));
+
+      function setActiveNav() {
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= sectionTop - 140) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          const href = link.getAttribute("href") || "";
+          if (href === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      const projectCount = document.getElementById("projectCount");
+      const languageFilters = document.getElementById("languageFilters");
+      const projectsGrid = document.getElementById("projectsGrid");
+
+      const projectsByLanguage = {
+        JavaScript: [
+          {
+            category: "AI + Telemedicine",
+            title: "ShasthoAI",
+            image: "./images/shasthoAIMockup.png",
+            imageAlt: "ShasthoAI project preview",
+            description:
+              "ShasthoAI is a full-stack AI-powered telemedicine platform designed for fracture detection, remote consultation, patient-doctor communication, pharmacy operations, and role-based healthcare management. It integrates X-ray analysis with medical reporting, appointment scheduling, realtime messaging, video calling, medical record management, pharmacy services, and admin controls in a single unified system.",
+            tags: [
+              "React",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "Firebase",
+              "Socket.IO",
+              "WebRTC",
+              "AI / ML",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://shastho-ai-fracture-detection-clien.vercel.app",
+                primary: true,
+              },
+              {
+                label: "GitHub Repo",
+                href: "https://github.com/JamilurRahmanKhan/Shastho-AI-fracture-detection",
+              },
+            ],
+          },
+          {
+            category: "Multi-Tenant SaaS",
+            title: "FlowForge",
+            image: "./images/flowforgeMockup.png",
+            imageAlt: "FlowForge project preview",
+            description:
+              "FlowForge is a multi-tenant SaaS project management and collaboration platform built for teams and organizations to manage workspaces, projects, tasks, members, and activity in one place. It includes workspace-based authentication, role and member-aware access control, project-specific member assignment, task workflows, workspace switching, and a responsive desktop/mobile experience.",
+            tags: [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Tailwind CSS",
+              "Java",
+              "Spring Boot",
+              "Spring Security",
+              "PostgreSQL",
+              "JWT",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://flowforge-collaboration.vercel.app/",
+                primary: true,
+              },
+              {
+                label: "GitHub Repo",
+                href: "https://github.com/JamilurRahmanKhan/flowforge",
+              },
+            ],
+          },
+          {
+            category: "Gym + Membership Experience",
+            title: "Kinetic Monolith",
+            image: "./images/gym.png",
+            imageAlt: "Kinetic Monolith gym website preview",
+            description:
+              "Kinetic Monolith is a full-stack gym and fitness management platform designed for modern training centers, premium health clubs, and performance-driven fitness brands. The system is structured to support membership plan management, class scheduling, trainer assignments, online registration, attendance monitoring, workout tracking, and member engagement through a centralized digital experience. It combines a bold promotional front-end with a scalable service architecture, allowing gyms to showcase programs, manage subscriptions, handle bookings, and streamline daily fitness operations in a single unified platform.",
+            tags: [
+              "React",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "Firebase Auth",
+              "Stripe",
+              "Chart.js",
+              "Tailwind CSS",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://kinetic-monolith.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Textile + Manufacturing Experience",
+            title: "Master Weaver",
+            image: "./images/textile.png",
+            imageAlt: "Master Weaver textile website preview",
+            description:
+              "Master Weaver is a premium textile manufacturing and sourcing platform designed for luxury fabric houses, fashion suppliers, and global material buyers. The system is structured to showcase textile collections, application-based fabric discovery, sustainability standards, product specifications, and inquiry-driven B2B communication in one unified experience. It highlights artisan craftsmanship, certified eco-friendly production, precision weaving workflows, global logistics support, and textile insight publishing, making it suitable for modern manufacturers that want to combine brand storytelling with commercial textile operations.",
+            tags: [
+              "Next.js",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "Cloudinary",
+              "Framer Motion",
+              "Tailwind CSS",
+              "Stripe",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://master-weaver.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Restaurant + Fine Dining Experience",
+            title: "The Heritage Table",
+            image: "./images/resturant.png",
+            imageAlt: "The Heritage Table restaurant website preview",
+            description:
+              "The Heritage Table is a premium restaurant and fine dining platform designed for upscale dining brands, chef-led culinary destinations, and hospitality businesses that want to blend elegant storytelling with reservation-focused customer experiences. The system is structured to support digital menu presentation, signature dish showcases, chef storytelling, seasonal specials, private dining promotion, gallery-driven ambience presentation, and online reservation workflows through one unified hospitality experience. It combines luxury restaurant branding with modern service architecture, making it suitable for fine dining venues that want to manage guest engagement, promote exclusive dining events, and present a polished high-end culinary identity across web and mobile platforms.",
+            tags: [
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "Stripe",
+              "Cloudinary",
+              "Tailwind CSS",
+              "Reservation System",
+              "Hospitality CMS",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://the-heritage-table.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Personal Portfolio + Creative Identity",
+            title: "CURATOR",
+            image: "./images/personal-blog.png",
+            imageAlt: "CURATOR personal portfolio website preview",
+            description:
+              "CURATOR is a premium personal portfolio platform designed for digital art directors, UI designers, creative developers, and multidisciplinary brand professionals who want to present their work through a refined editorial-style experience. The system is structured to support project showcases, service presentation, personal branding, resume storytelling, blog publishing, and contact-driven lead generation within one unified portfolio environment. It combines luxury-inspired visual direction with modern front-end architecture, making it suitable for creatives who want to showcase selected works, communicate expertise, attract freelance opportunities, and establish a polished high-end digital presence across desktop, tablet, and mobile devices.",
+            tags: [
+              "JavaScript",
+              "React",
+              "Next.js",
+              "Tailwind CSS",
+              "Framer Motion",
+              "Portfolio CMS",
+              "Responsive Design",
+              "Case Study Showcase",
+              "Editorial UI",
+              "Personal Branding",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://curator-liard.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Law Firm + Legal Consultation Platform",
+            title: "The Architectural Counsel",
+            image: "./images/law.png",
+            imageAlt: "The Architectural Counsel law firm website preview",
+            description:
+              "The Architectural Counsel is a modern law firm and legal consultation platform designed for boutique practices, litigation chambers, and advisory-focused legal teams that want to present their services through a refined, trust-centered digital experience. The system is structured to support practice area discovery, attorney profile presentation, legal insights publishing, case result storytelling, and consultation-driven client communication within one unified platform. It combines premium legal branding with scalable service architecture, making it suitable for firms that want to showcase expertise, build client confidence, and streamline inquiry management across desktop, tablet, and mobile devices.",
+            tags: [
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "JWT Authentication",
+              "Tailwind CSS",
+              "Framer Motion",
+              "Legal CMS",
+              "Consultation Workflow",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://the-architectural-counsel.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+        ],
+        PHP: [
+          {
+            category: "Laravel Full Stack",
+            title: "StudyXchange",
+            image: "./images/studyXchangeMockup.png",
+            imageAlt: "StudyXchange project preview",
+            description:
+              "StudyXchange is a role-based student career and academic collaboration platform built to support admissions, community Q&A, research collaboration, resource spaces, job applications, skill assessments, and career recommendations. It includes separate dashboards for students, university admins, company admins, and super admins, creating a complete ecosystem for academic and career growth.",
+            tags: [
+              "Laravel 11",
+              "PHP 8.2+",
+              "MySQL",
+              "Blade",
+              "Tailwind CSS",
+              "Vite",
+              "Laravel Breeze",
+              "Chatify",
+            ],
+            links: [
+              { label: "Live Demo", href: "#", primary: true },
+              {
+                label: "GitHub Repo",
+                href: "https://github.com/JamilurRahmanKhan/StudyXchange",
+              },
+            ],
+          },
+          {
+            category: "Cafe + Reservation Experience",
+            title: "The Artisanal Cafe",
+            image: "./images/cafe.png",
+            imageAlt: "The Artisanal Cafe project preview",
+            description:
+              "The Artisanal Cafe is a full-featured cafe and hospitality management platform designed for modern coffee shops, boutique cafes, and artisan dining spaces. The system is structured to support digital menu presentation, table reservations, featured seasonal collections, event promotion, online ordering, gallery-based brand storytelling, and customer inquiry management through one unified experience. It combines an editorial-style customer-facing interface with a service-oriented backend architecture, making it suitable for cafes that want to manage bookings, showcase signature items, promote special offers, and strengthen customer engagement across web and mobile devices.",
+            tags: [
+              "Laravel",
+              "PHP",
+              "MySQL",
+              "Blade",
+              "Tailwind CSS",
+              "Livewire",
+              "Alpine.js",
+              "Stripe",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://alchemist-cafe.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Mini E-Commerce + Curated Storefront",
+            title: "ATELIER",
+            image: "./images/mini-ecom.png",
+            imageAlt: "ATELIER mini e-commerce project preview",
+            description:
+              "ATELIER is a modern mini e-commerce platform designed for curated lifestyle brands, boutique online stores, and design-focused retail businesses. The system is structured to support category-based product discovery, featured collections, seasonal deals, cart and checkout workflows, order tracking, newsletter growth, and trust-focused customer shopping journeys within a unified storefront experience. It combines minimalist product presentation with scalable commerce architecture, making it suitable for brands that want to showcase curated inventory, promotional campaigns, secure purchasing, and polished customer support in one cohesive digital platform.",
+            tags: [
+              "Laravel",
+              "PHP",
+              "MySQL",
+              "Blade",
+              "Tailwind CSS",
+              "Alpine.js",
+              "Stripe",
+              "REST API",
+              "Redis",
+              "Order Tracking",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://atelier-tan-beta.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Hospital + Patient Care Platform",
+            title: "Aetheria Health",
+            image: "./images/hospital.png",
+            imageAlt: "Aetheria Health hospital website preview",
+            description:
+              "Aetheria Health is a modern hospital and patient care platform designed for multi-specialty medical centers, private hospitals, and advanced healthcare organizations that want to unify patient communication, department discovery, doctor presentation, emergency response visibility, diagnostic package promotion, and health content publishing within a single digital experience. The system is structured to support appointment booking, specialist browsing, department-level service presentation, emergency care access, facility showcasing, preventive health package management, and trust-driven patient engagement through a polished healthcare interface. It combines premium medical branding with scalable service architecture, making it suitable for hospitals that want to present clinical excellence, improve patient access, and streamline healthcare discovery across desktop, tablet, and mobile devices.",
+            tags: [
+              "Laravel",
+              "PHP",
+              "MySQL",
+              "Blade",
+              "Tailwind CSS",
+              "Livewire",
+              "Alpine.js",
+              "Role-Based Access",
+              "Appointment Scheduling",
+              "Healthcare CMS",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://serenity-health-medical.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+        ],
+        Java: [
+          {
+            category: "Multi-Tenant SaaS",
+            title: "FlowForge",
+            image: "./images/flowforgeMockup.png",
+            imageAlt: "FlowForge project preview",
+            description:
+              "FlowForge combines a modern frontend with a Java-powered backend using Spring Boot and Spring Security to manage workspace-based collaboration, task workflows, member roles, and secure multi-tenant access.",
+            tags: [
+              "Java",
+              "Spring Boot",
+              "Spring Security",
+              "JPA / Hibernate",
+              "PostgreSQL",
+              "JWT",
+              "Next.js",
+              "TypeScript",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://flowforge-collaboration.vercel.app/",
+                primary: true,
+              },
+              {
+                label: "GitHub Repo",
+                href: "https://github.com/JamilurRahmanKhan/flowforge",
+              },
+            ],
+          },
+          {
+            category: "Car Wash + Auto Repair",
+            title: "Kinetic Atelier",
+            image: "./images/car-wash.png",
+            imageAlt: "Kinetic Atelier car wash and repair project preview",
+            description:
+              "Kinetic Atelier is a premium automotive service and vehicle care platform designed for modern car wash centers, detailing studios, and repair workshops. The system is structured to support service discovery, package-based booking, vehicle maintenance workflows, detailing showcases, diagnostics communication, and customer service engagement through a unified digital experience. It combines luxury automotive branding with practical service operations, allowing businesses to promote wash packages, repair services, before-and-after results, expert consultations, and appointment scheduling in one scalable platform.",
+            tags: [
+              "Spring Boot",
+              "Java",
+              "Spring Security",
+              "PostgreSQL",
+              "Thymeleaf",
+              "Bootstrap",
+              "REST API",
+              "JWT Authentication",
+              "Cloudinary",
+              "Booking System",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://kinetic-atelier.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Education + Academic Experience",
+            title: "The Digital Chancellor",
+            image: "./images/education.png",
+            imageAlt: "The Digital Chancellor education website preview",
+            description:
+              "The Digital Chancellor is a modern academic institution platform designed for schools, colleges, and premium education brands that want to unify admissions, academic program discovery, faculty presentation, campus life storytelling, news publishing, and inquiry management within a single digital experience. The system is structured to support admission campaigns, program detail pages, faculty showcases, event and research announcements, gallery presentation, and student engagement journeys through a polished institution-focused interface. It combines heritage-inspired academic branding with a future-facing education experience, making it suitable for institutions that want to present credibility, student life, and academic excellence in one scalable platform.",
+            tags: [
+              "Spring Boot",
+              "Java",
+              "Spring Security",
+              "Thymeleaf",
+              "PostgreSQL",
+              "Hibernate",
+              "Bootstrap",
+              "REST API",
+              "Cloudinary",
+              "Role-Based Access",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://the-digital-chancellor.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Grocery + Online Supermarket",
+            title: "The Organic Atrium",
+            image: "./images/grocery.png",
+            imageAlt: "The Organic Atrium grocery website preview",
+            description:
+              "The Organic Atrium is a modern online grocery and supermarket platform designed for fresh food retailers, organic produce brands, and delivery-focused grocery businesses that want to unify product discovery, category-based shopping, weekly promotions, cart and checkout flow, order tracking, and store locator support within one connected experience. The system is structured to support product listing pages, category-specific browsing, responsive cart management, delivery-oriented checkout, promotional deal campaigns, and trust-focused customer shopping journeys through a polished grocery interface. It combines clean supermarket branding with scalable commerce architecture, making it suitable for grocery businesses that want to present fresh inventory, streamline online ordering, and improve customer convenience across desktop, tablet, and mobile devices.",
+            tags: [
+              "Spring Boot",
+              "Java",
+              "Spring Security",
+              "Thymeleaf",
+              "PostgreSQL",
+              "Hibernate",
+              "Bootstrap",
+              "REST API",
+              "Redis",
+              "Order Tracking",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://organic-atrium.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+        ],
+        Python: [
+          {
+            category: "ML + Communication Systems",
+            title:
+              "ML-Based Performance Prediction and Optimization of FSO Links",
+            image: "./images/fsoMockup.png",
+            imageAlt:
+              "ML-based performance prediction and optimization of FSO links project preview",
+            description:
+              "This thesis project analyzes the performance of Free Space Optical (FSO) communication links using physics-based modeling, machine learning, and real environmental data. The system predicts key link metrics such as SNR and BER under varying distance and weather conditions and visualizes degradation through an interactive comparison interface.",
+            tags: [
+              "Python",
+              "Machine Learning",
+              "Random Forest Regression",
+              "FSO Communication",
+              "SNR / BER Analysis",
+              "Data Visualization",
+              "Simulation",
+            ],
+            links: [
+              { label: "Live Demo", href: "#", primary: true },
+              {
+                label: "GitHub Repo",
+                href: "https://github.com/JamilurRahmanKhan/ML-based-performance-prediction-and-optimization-of-FSO-links",
+              },
+            ],
+          },
+          {
+            category: "Pharmacy + Healthcare Services",
+            title: "Clinical Sanctuary",
+            image: "./images/pharmacy.png",
+            imageAlt:
+              "Clinical Sanctuary pharmacy and healthcare platform preview",
+            description:
+              "Clinical Sanctuary is an integrated pharmacy and healthcare service platform designed for modern medical centers, digital pharmacies, and patient-care organizations. The system is structured to support medicine discovery, prescription-based ordering, diagnostic package promotion, doctor coordination, health content publishing, and patient inquiry management through a unified healthcare experience. It combines a trust-focused medical interface with scalable service modules for pharmacy operations, preventive care packages, consultation workflows, and healthcare support, making it suitable for organizations that want to connect pharmacy services with broader clinical and wellness management.",
+            tags: [
+              "Django",
+              "Python",
+              "PostgreSQL",
+              "Bootstrap",
+              "REST API",
+              "Redis",
+              "Celery",
+              "JWT Authentication",
+              "Cloudinary",
+              "Healthcare CMS",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://clinical-sanctuary-medical-center.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Ice Cream + Boutique Ordering",
+            title: "The Artisanal Scoop",
+            image: "./images/ice-cream.png",
+            imageAlt: "The Artisanal Scoop ice cream shop project preview",
+            description:
+              "The Artisanal Scoop is a premium ice-cream boutique and dessert ordering platform designed for artisanal scoop shops, seasonal flavor brands, and luxury takeaway dessert businesses. The system is structured to support flavor discovery, signature product presentation, seasonal campaign launches, boutique location browsing, online ordering, and checkout-driven customer engagement through one unified storefront experience. It combines an editorial dessert brand identity with scalable commerce features, making it suitable for ice-cream businesses that want to showcase handcrafted flavors, promote limited collections, manage boutique visibility, and deliver a refined online ordering journey.",
+            tags: [
+              "Django",
+              "Python",
+              "PostgreSQL",
+              "Bootstrap",
+              "Stripe",
+              "Cloudinary",
+              "Redis",
+              "Celery",
+              "REST API",
+              "Boutique Commerce",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://artisanal-scoop.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Non-Profit + Social Impact Platform",
+            title: "Kindred Path",
+            image: "./images/ngo.png",
+            imageAlt: "Kindred Path NGO website preview",
+            description:
+              "Kindred Path is a modern non-profit and social impact platform designed for humanitarian organizations, global NGOs, community foundations, and cause-driven initiatives. The system is structured to support cause discovery, donation campaigns, volunteer engagement, impact storytelling, event promotion, transparency reporting, and community-centered program communication through one unified digital experience. It combines an emotionally driven public-facing interface with scalable support modules for fundraising, campaign visibility, field updates, and donor trust-building, making it suitable for organizations that want to present their mission, showcase measurable impact, and strengthen supporter participation across web and mobile channels.",
+            tags: [
+              "Django",
+              "Python",
+              "PostgreSQL",
+              "Bootstrap",
+              "REST API",
+              "Stripe",
+              "Cloudinary",
+              "Celery",
+              "Redis",
+              "Impact Reporting",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://kindred-path-eight.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+          {
+            category: "Editorial Blog + Publishing Platform",
+            title: "Quiet Journal",
+            image: "./images/education.png",
+            imageAlt: "Quiet Journal blog website preview",
+            description:
+              "Quiet Journal is a modern editorial publishing platform designed for digital magazines, personal publications, and content-driven media brands that want to present articles through a calm, structured, and highly readable experience. The system is structured to support story archives, category-based browsing, editor’s picks, article detail pages, newsletter growth, and publication identity management within one unified editorial environment. It combines refined typography with scalable publishing architecture, making it suitable for blogs and online magazines that want to organize long-form content, maintain consistent design across pages, and deliver a polished reading experience across desktop, tablet, and mobile devices.",
+            tags: [
+              "Django",
+              "Python",
+              "PostgreSQL",
+              "Bootstrap",
+              "Wagtail CMS",
+              "Redis",
+              "Celery",
+              "REST API",
+              "Cloudinary",
+              "Editorial Publishing",
+            ],
+            links: [
+              {
+                label: "Live Demo",
+                href: "https://quiet-journal-eosin.vercel.app/",
+                primary: true,
+              },
+            ],
+          },
+        ],
+      };
+
+      const languageOrder = Object.keys(projectsByLanguage);
+      let activeLanguage = languageOrder[0];
+
+      function renderLanguageFilters() {
+        languageFilters.innerHTML = "";
+
+        languageOrder.forEach((language) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className =
+            "language-filter rounded-full px-4 py-2.5 text-sm font-semibold";
+          button.textContent = language;
+          button.setAttribute(
+            "aria-pressed",
+            language === activeLanguage ? "true" : "false",
+          );
+
+          if (language === activeLanguage) {
+            button.classList.add("active");
+          }
+
+          button.addEventListener("click", () => {
+            activeLanguage = language;
+            renderLanguageFilters();
+            renderProjects();
+          });
+
+          languageFilters.appendChild(button);
+        });
+      }
+
+      function createProjectCard(project) {
+        const article = document.createElement("article");
+        article.className =
+          "reveal active overflow-hidden rounded-[1.75rem] border border-line bg-white/5 shadow-card transition hover:-translate-y-1 hover:border-primary/20";
+
+        const tagsMarkup = project.tags
+          .map(
+            (tag) => `
+              <span class="project-tag rounded-full px-3 py-1.5 text-xs">
+                ${tag}
+              </span>
+            `,
+          )
+          .join("");
+
+        const linksMarkup = project.links
+          .map(
+            (link) => `
+              <a
+                href="${link.href}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-semibold ${link.primary ? "text-primary hover:underline" : "text-text hover:text-primary"}"
+              >
+                ${link.label}
+              </a>
+            `,
+          )
+          .join("");
+
+        article.innerHTML = `
+          <div class="aspect-[16/9] overflow-hidden">
+            <img
+              src="${project.image}"
+              alt="${project.imageAlt}"
+              class="h-full w-full object-cover transition duration-500 hover:scale-105"
+            />
+          </div>
+
+          <div class="p-7">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                  ${activeLanguage} Project
+                </p>
+                <h3 class="mt-1 font-headline text-2xl font-semibold">
+                  ${project.title}
+                </h3>
+              </div>
+
+              <span
+                class="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary"
+              >
+                ${project.category}
+              </span>
+            </div>
+
+            <p class="text-sm leading-7 text-muted">
+              ${project.description}
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              ${tagsMarkup}
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-5">
+              ${linksMarkup}
+            </div>
+          </div>
+        `;
+
+        return article;
+      }
+
+      function renderProjects() {
+        const projects = projectsByLanguage[activeLanguage] || [];
+        projectCount.textContent = projects.length;
+        projectsGrid.innerHTML = "";
+
+        if (!projects.length) {
+          projectsGrid.innerHTML = `
+            <div class="rounded-[1.75rem] border border-dashed border-lineStrong bg-white/5 p-8 text-muted">
+              No projects available for this language yet.
+            </div>
+          `;
+          return;
+        }
+
+        projects.forEach((project) => {
+          projectsGrid.appendChild(createProjectCard(project));
+        });
+      }
+
+      renderLanguageFilters();
+      renderProjects();
+
+      window.addEventListener("scroll", setActiveNav);
+      window.addEventListener("load", setActiveNav);
+    </script>
+  </body>
+</html>
